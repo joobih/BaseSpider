@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import requests
+import sys
+sys.path.append("submodule/Common")
 
-class CSpider():
+import requests
+import useful
+
+class CSpider(object):
 
     def __init__(self,url,**kwag):
         self.url = url
