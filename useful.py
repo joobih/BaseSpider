@@ -1,30 +1,29 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import urllib
 import re  
 from urlparse import urlparse
-      
-#    url = "http://www.baidu.com"  
-def is_normal_url(url):      
 
+
+"""
+    将url字符串参数进行检查,是否是合法的url字符串,True代表是,False代表否
+"""
+def is_normal_url(url):      
     if re.match(r'^https?:/{2}\w.+$', url):  
-        print("Ok.")  
         return True
     else:  
-        print("Error.")  
         return False
 
+
+"""
+    将参数url进行分解,返回使用的协议,主机名,端口号,路径等
+"""
 def analysis_url(url):
     u = urlparse(url)
     scheme = u.scheme
-    print "protocol:",scheme
     hostname = u.hostname
-    print "hostname:",hostname
     port = u.port
-    print "port:",port
     path = u.path
-    print "path:",path
     result = {
         "scheme":scheme,
         "hostname":hostname,
@@ -33,6 +32,3 @@ def analysis_url(url):
     }
     return result
 
-url = "http://www.baidu.com"
-print is_normal_url(url)
-print analysis_url(url)

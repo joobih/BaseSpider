@@ -27,7 +27,7 @@ class CSpider():
         raise NotImplementedError
 
     """
-        解析页面中的关心的url
+        解析页面中的url
     """
     def parser_url(self,html):
         raise NotImplementedError
