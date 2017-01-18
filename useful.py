@@ -15,7 +15,7 @@ def is_normal_url(url):
         print("Error.")  
         return False
 
-def parser_url(url):
+def analysis_url(url):
     u = urlparse(url)
     scheme = u.scheme
     print "protocol:",scheme
@@ -35,4 +35,4 @@ def parser_url(url):
 
 url = "http://www.baidu.com"
 print is_normal_url(url)
-print parser_url(url)
+print analysis_url(url)
