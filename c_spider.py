@@ -32,4 +32,15 @@ class CSpider():
     def parser_url(self,html):
         raise NotImplementedError
 
+    def run(self):
+        html = self.index()
+        urls = self.parser_url(html)
+        result = []
+        for u in urls:
+            r = self.s.get(u,headers = self.headers)
+            h = r.content
+            data = self.parser_data(h)
+            if data:
+                result.extend(data)
 
+        return result
