@@ -7,7 +7,7 @@ sys.path.append("submodule/Common")
 import requests
 import useful
 
-class CSpider(object):
+class BaseSpider(object):
 
     def __init__(self,url,**kwag):
         self.url = url
