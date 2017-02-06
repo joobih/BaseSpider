@@ -9,7 +9,7 @@ import useful
 
 class BaseSpider(object):
 
-    def __init__(session = None,**kwag):
+    def __init__(self,session = None,**kwag):
 #        self.url = url
         if session:
             self.s = session
@@ -36,11 +36,9 @@ class BaseSpider(object):
         urls = self.parser_url(html)
         result = []
         for u in urls:
-            r = self.s.get(u,headers = self.headers)
+            r = self.s.get(u,headers = self.headers,proxies = self.proxies)
             h = r.content
             data = self.parser_data(h)
-#            self.save_to_db(data)
             if data:
                 result.extend(data)
-
         return result
