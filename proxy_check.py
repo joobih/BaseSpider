@@ -21,6 +21,7 @@ def proxy_check(ip,port,type = "http"):
         end_time = time.time()
         html = r.content
         result["is_available"] = False
+        print html
         j_res = json.loads(html)
         if ip == j_res["origin"]:
             result["is_available"] = True
