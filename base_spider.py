@@ -6,6 +6,7 @@ sys.path.append("submodule/Common")
 
 import requests
 import useful
+from queue import Queue
 
 class BaseSpider(object):
 
@@ -23,6 +24,8 @@ class BaseSpider(object):
 
         self.proxies = None
 
+        self.queue = Queue()
+
     """
         解析页面中的重要数据
     """
@@ -30,9 +33,21 @@ class BaseSpider(object):
         raise NotImplementedError
 
     """
+        向队列中增加url
+    """
+    def _push_url_to_queue(self,url):
+        self.queue.put(url)
+
+    def _pop_url_from_queue(self):
+        if not self.queue.empty():
+            url = self.queue.pop()
+            return url
+        return ""
+
+    """
         解析页面中的url
     """
-    def parser_url(self,html):
+    def parser_url(self,html=None):
         raise NotImplementedError
 
     def run(self):
