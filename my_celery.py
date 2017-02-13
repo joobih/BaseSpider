@@ -7,6 +7,10 @@ import requests
 from headers import HEADERS
 import base64
 
+"""
+    celery -A celery_test worker --loglevel=info
+"""
+
 app = Celery("tasks",broker='amqp://guest@localhost//',backend='redis://localhost')
 
 @app.task
